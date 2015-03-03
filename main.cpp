@@ -15,10 +15,10 @@ int main() {
 	/*
 	 * PRUEBAS DIVIDE Y VENCERAS
 	 */
-	polinomio x(9);
+	polinomio x(4);
 	cout << "Polinomio 1: " << x << endl;
 	cin >> continuar;
-	polinomio y(9);
+	polinomio y(3);
 	cout << "Polinomio 2: " << y << endl;
 	cin >> continuar;
 	polinomio t(x.getGrado() + y.getGrado());
@@ -37,10 +37,8 @@ int main() {
 	/*
 	 * Introducir los polinomios de manera manual
 	 */
-	/*polinomio u;
-	polinomio v;
+	polinomio u;
+ 	polinomio v;
 	cout << "Clasico" << u.multiplica(v) << endl;
 	cout << "DV " << t.multiplicaDv(u, v, u.getTerminos()) << endl;
-	system("pause");
-	return 0;*/
 }
