@@ -22,33 +22,25 @@ int main() {
 	cout << "Polinomio 2: " << y << endl;
 	cin >> continuar;
 	polinomio t(x.getGrado() + y.getGrado());
-	t.setEstra(B);
-	cout << "DIVIDE Y VENCERAS" << endl;
-	float secs;
-	clock_t dvcomienzo;
-	clock_t dvfin;
-	dvcomienzo = clock();
-	t = t.algoritmo(x, y, x.getTerminos());
-	//t.algoritmo(x, y, x.getTerminos());
-	dvfin = clock();
-	secs = (float) (dvfin - dvcomienzo) / CLOCKS_PER_SEC;
-	cout << t << endl;
-	cout << "Tiempo de ejecucion " << setprecision(5) << fixed << secs << endl;
-	cout << endl;
 
-	cout << "ALGORITMO CLASICO" << endl;
-	x.setEstra(A);
-	dvcomienzo = clock();
-	t = x.algoritmo(x, y, x.getTerminos());
-	//x.algoritmo(x, y, x.getTerminos());
-	dvfin = clock();
-	secs = (float) (dvfin - dvcomienzo) / CLOCKS_PER_SEC;
+	Context a;
+	a.setstrategy(DV);
+	cout << "DIVIDE Y VENCERAS" << endl;
+	a.ContextInterface(t, x, y, x.getTerminos());
 	cout << t << endl;
-	cout << "Tiempo de ejecucion " << setprecision(5) << fixed << secs << endl;
-	polinomio u;
+
+	a.setstrategy(T);
+	cout << "ALGORITMO TRADICIONAL" << endl;
+	a.ContextInterface(t, x, y, x.getTerminos());
+	cout << t << endl;
+
+	/*
+	 * Introducir los polinomios de manera manual
+	 */
+	/*polinomio u;
 	polinomio v;
 	cout << "Clasico" << u.multiplica(v) << endl;
 	cout << "DV " << t.multiplicaDv(u, v, u.getTerminos()) << endl;
 	system("pause");
-	return 0;
+	return 0;*/
 }

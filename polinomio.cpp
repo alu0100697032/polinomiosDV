@@ -42,7 +42,7 @@ void monomio::setExp(int e){
     exp = e;
 }
 /*
-* SOBRECARGA DE OPERADORES DE EXTRACCIÓN E INSERCIÓN
+* SOBRECARGA DE OPERADORES DE EXTRACCIï¿½N E INSERCIï¿½N
 */
 ostream & operator << (ostream & sout, const monomio & s){
     if (s.getExp() == 1 && s.getCoef() == 1){
@@ -110,7 +110,6 @@ monomio monomio :: operator * (const monomio & y){
 */
 
 polinomio::polinomio(){
-    _strategy = NULL;
     int c = 0;
     int e = 0;
     cout << "Introduzca el grado:" << endl;
@@ -131,7 +130,6 @@ polinomio::polinomio(){
 */
 
 polinomio::polinomio(int g, const int t){
-    _strategy = NULL;
     setGrado(g);
     setTerminos(t);
     poli = new monomio[t];
@@ -146,7 +144,6 @@ polinomio::polinomio(int g, const int t){
 }
 
 polinomio::polinomio(int g){
-    _strategy = NULL;
     setTerminos(g + 1);
     setGrado(g);
     poli = new monomio[getTerminos()];
@@ -233,7 +230,7 @@ ostream & operator << (ostream & sout, const polinomio & y){
 /************************************
 *************************************
 *************************************
-* MÉTODOS PRACTICA DIVIDE Y VENCERÁS*
+* Mï¿½TODOS PRACTICA DIVIDE Y VENCERï¿½S*
 *************************************
 *************************************
 *************************************/
@@ -374,32 +371,6 @@ polinomio polinomio::multiplicaDv(polinomio & x, polinomio & y, int n){
         polinomio aux1 = r.resta(p).resta(q);
         polinomio z = p.suma(aux1).suma(q);
         return z;
-    }
-}
-/*
-* METODOS PATRON DE ESTRATEGIA
-*/
-void polinomio::setEstra(TYPESTRATEGY type ) {
-    delete _strategy;
-    if (type == A)
-       	_strategy = new ConcreteStrategyA();
-    else if (type == B)
-       	_strategy = new ConcreteStrategyB();
-    else {
-       	cout << "ERROR: Stratey not known" << endl;
-       	_strategy = NULL;
-    }
-}
-int polinomio::getEstra() {
-  	_strategy -> AlgorithmInterface();
-}
-
-polinomio polinomio::algoritmo(polinomio & x, polinomio & y, int n){
-    if(getEstra() == 1){
-       return multiplica(y);
-    }
-    else if(getEstra() == 2){
-        return multiplicaDv(x, y, n);
     }
 }
 
